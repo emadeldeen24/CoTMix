@@ -204,9 +204,9 @@ def get_weight_gpu(source_feature, target_feature, validation_feature, configs, 
 
 
 def calc_dev_risk(target_model, src_train_dl, tgt_train_dl, src_valid_dl, configs, device):
-    _, src_train_feats = target_model.feature_extractor(src_train_dl.dataset.x_data.float().to(device))
-    _, tgt_train_feats = target_model.feature_extractor(tgt_train_dl.dataset.x_data.float().to(device))
-    _, src_valid_feats = target_model.feature_extractor(src_valid_dl.dataset.x_data.float().to(device))
+    src_train_feats = target_model.feature_extractor(src_train_dl.dataset.x_data.float().to(device))
+    tgt_train_feats = target_model.feature_extractor(tgt_train_dl.dataset.x_data.float().to(device))
+    src_valid_feats = target_model.feature_extractor(src_valid_dl.dataset.x_data.float().to(device))
     src_valid_pred = target_model.classifier(src_valid_feats)
 
     dev_weights = get_weight_gpu(src_train_feats.to(device), tgt_train_feats.to(device),
@@ -222,7 +222,7 @@ def calculate_risk(target_model, risk_dataloader, device):
     x_data = risk_dataloader.dataset.x_data
     y_data = risk_dataloader.dataset.y_data
 
-    _, feat = target_model.feature_extractor(x_data.float().to(device))
+    feat = target_model.feature_extractor(x_data.float().to(device))
     pred = target_model.classifier(feat)
     cls_loss = F.cross_entropy(pred, y_data.long().to(device))
     return cls_loss.item()
