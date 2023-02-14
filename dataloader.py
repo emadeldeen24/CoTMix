@@ -9,7 +9,7 @@ import numpy as np
 
 class Load_Dataset(Dataset):
     # Initialize your data, download, etc.
-    def __init__(self, dataset, normalize):
+    def __init__(self, dataset):
         super(Load_Dataset, self).__init__()
 
         X_train = dataset["samples"]
@@ -45,8 +45,8 @@ def data_generator(data_path, domain_id, dataset_configs, hparams):
     test_dataset = torch.load(os.path.join(data_path, "test_" + domain_id + ".pt"))
 
     # Loading datasets
-    train_dataset = Load_Dataset(train_dataset, dataset_configs.normalize)
-    test_dataset = Load_Dataset(test_dataset, dataset_configs.normalize)
+    train_dataset = Load_Dataset(train_dataset)
+    test_dataset = Load_Dataset(test_dataset)
 
     # Dataloaders
     batch_size = hparams["batch_size"]
