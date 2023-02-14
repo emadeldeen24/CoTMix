@@ -116,7 +116,7 @@ def copy_Files(destination):
     destination_dir = os.path.join(destination, "MODEL_BACKUP_FILES")
     os.makedirs(destination_dir, exist_ok=True)
     copy("main.py", os.path.join(destination_dir, "main.py"))
-    copy("dataloader/dataloader.py", os.path.join(destination_dir, "dataloader.py"))
+    copy("dataloader.py", os.path.join(destination_dir, "dataloader.py"))
     copy(f"models/models.py", os.path.join(destination_dir, f"models.py"))
     copy(f"models/loss.py", os.path.join(destination_dir, f"loss.py"))
     copy("algorithms.py", os.path.join(destination_dir, "algorithms.py"))
