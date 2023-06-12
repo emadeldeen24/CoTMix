@@ -63,7 +63,7 @@ class CoTMix(Algorithm):
                      torch.mean(torch.stack([torch.roll(src_x, -i, 2) for i in range(-h, h)], 2), 2)
 
 
-# ====== Source =====================
+# ====== Extract features and calc logits =====================
         self.optimizer.zero_grad()
 
         # Src original features
@@ -75,7 +75,7 @@ class CoTMix(Algorithm):
         trg_orig_logits = self.classifier(trg_orig_feat)
 
 
-# -----------  The two main losses
+# -----------  The two main losses: L_CE on source and L_ent on target 
         # Cross-Entropy loss
         src_cls_loss = self.cross_entropy(src_orig_logits, src_y)
         loss = src_cls_loss * round(self.hparams.src_cls_weight, 2)
