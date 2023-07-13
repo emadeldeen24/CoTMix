@@ -1,6 +1,6 @@
 # CoTMix:  Contrastive Domain Adaptation for Time-Series via Temporal Mixup [[Paper](https://arxiv.org/abs/2212.01555)] [[Cite](#citation)]
 
-This work has been accepted for publication in [IEEE Transactions on Artificial Intelligence (TAI).](https://ieeexplore.ieee.org/document/10177231)
+## This work has been accepted for publication in [IEEE Transactions on Artificial Intelligence (TAI).](https://ieeexplore.ieee.org/document/10177231)
 
 ### The code and the experimental datasets are adopted from [AdaTime framework](https://github.com/emadeldeen24/AdaTime)
 
